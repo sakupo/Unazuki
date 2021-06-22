@@ -1,4 +1,4 @@
-﻿{
+{
     "name": "PlayMode",
     "references": ["MyProject"],
     "optionalUnityReferences": [
