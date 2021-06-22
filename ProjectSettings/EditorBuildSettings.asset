@@ -9,6 +9,21 @@ EditorBuildSettings:
     path: Assets/Scenes/RootScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
+    path: Assets/Scenes/HomeScene.unity
+    guid: 8c13968aadeb14d149e39c0f18c932b2
+  - enabled: 1
+    path: Assets/Scenes/MainScene.unity
+    guid: 8da4c12efe23a49e2b9f9d87c6ffa479
+  - enabled: 1
     path: Assets/Scenes/SpoutScene.unity
     guid: 4732978223c20484e8840450100c7264
+  - enabled: 1
+    path: Assets/Scenes/UnazukiScene.unity
+    guid: 56d019525426d40fdab894023fe54164
+  - enabled: 1
+    path: Assets/Scenes/ZoomScene.unity
+    guid: b67f80e31e196477f998fe154e61b914
+  - enabled: 1
+    path: Assets/Scenes/SettingsScene.unity
+    guid: 4f80f08b9df554e1cb382af9fbd58544
   m_configObjects: {}
