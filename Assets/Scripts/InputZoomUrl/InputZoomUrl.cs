@@ -34,11 +34,18 @@ namespace InputZoomUrl
         /// ボタンをクリックした時の処理
         public void OnClick()
         {
-            Debug.Log(inputRoomNameField.text);
-            Debug.Log(inputZoomUrlField.text);
+            Dictionary<string, string> data = GetZoomInputData();
+        }
 
+        private Dictionary<string, string> GetZoomInputData()
+        {
+            Dictionary<string, string> data = new Dictionary<string, string>();
+            data.Add(inputRoomNametext.text, inputZoomUrltext.text);
+            
             inputRoomNameField.text = "";
             inputZoomUrlField.text = "";
+
+            return data;
         }
     }
 
