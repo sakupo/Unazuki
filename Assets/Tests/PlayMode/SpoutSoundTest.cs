@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
@@ -11,10 +12,10 @@ using UnityEngine.TestTools;
 
 namespace Tests
 {
-    public class SpoutBackColorTestPlay
+    public class SpoutSoundTest
     {
         private Canvas mainCanvas;
-        ColorChangeScript quad;
+        SoundVolume soundvolume;
 
 
         [SetUp]
@@ -23,7 +24,7 @@ namespace Tests
             // 初期シーンのロード
             SceneManager.LoadScene("RootScene");
             SceneManager.LoadSceneAsync("SpoutScene").completed += _ => {
-                quad = GameObject.Find("Quad")?.GetComponent<ColorChangeScript>();
+                soundvolume = GameObject.Find("AudioSource")?.GetComponent<SoundVolume>();
             };
 
 
@@ -32,11 +33,12 @@ namespace Tests
         // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
         // `yield return null;` to skip a frame.
         [UnityTest]
-        public IEnumerator Spout_ColorChangeTest()
+        public IEnumerator Spout_VolumeTest()
         {
-            // うなずきが0に初期化されて青になっているかが初期化されているか
-            var unazuki_val = quad.UnazukiColor();
-            Assert.AreEqual(new Color(0.1f, 0.2f, 0.5f, 1), unazuki_val);
+            //音量は1~0か
+            var volume = soundvolume.m_volumeRate;
+            Assert.GreaterOrEqual(volume, 0f);
+            Assert.LessOrEqual(volume, 1f);
             yield return null;
         }
     }
