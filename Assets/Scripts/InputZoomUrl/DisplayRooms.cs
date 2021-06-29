@@ -24,8 +24,16 @@ namespace InputZoomUrl {
         	buttonWidth = baseRoomButton.GetComponent<RectTransform>().sizeDelta.x;
  	        buttonHeight = baseRoomButton.GetComponent<RectTransform>().sizeDelta.y;
 
-    	    zoomUrlsData = new ZoomUrlsData();
-
+			// データを読み込み
+			string savedData =PlayerPrefs.GetString("ZoomUrlsData");
+			if (savedData == "")
+			{
+				zoomUrlsData = new ZoomUrlsData();
+			}
+			else
+			{
+				zoomUrlsData = JsonUtility.FromJson<ZoomUrlsData>(savedData);
+			}
 
 	        DisplayAllRoomButtons();
     	}
@@ -79,6 +87,14 @@ namespace InputZoomUrl {
         	// Debug.Log(n + "-th room button is clicked!!!");
 	        Tuple<string, string> zoomUrlData = zoomUrlsData.Get(n);
     	    Debug.Log("room name:'" + zoomUrlData.Item1 + "'(url:'" + zoomUrlData.Item2 + "') is clicked!!!");
-	    }
+	    
+			Debug.Log(JsonUtility.ToJson(zoomUrlsData));
+		}
+
+		void OnApplicationQuit(){
+			// アプリ終了時にデータを保存する
+			string savedData = JsonUtility.ToJson(zoomUrlsData);
+			PlayerPrefs.SetString("ZoomUrlsData", savedData);
+		}
 	}
 }

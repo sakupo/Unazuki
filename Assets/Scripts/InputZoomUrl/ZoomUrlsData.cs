@@ -7,36 +7,58 @@ using UnityEngine.UI;
 namespace InputZoomUrl
 {
     // room名とurlのペアを全て保存するデータ構造
-    public class ZoomUrlsData
+    [System.Serializable]
+    public class ZoomUrlsData : ISerializationCallbackReceiver
     {
-        private List<Tuple<string, string>> zoomUrlsData;
+        public List<Tuple<string, string>> data;
+        public List<string> dataForSerialize;
 
         public ZoomUrlsData()
         {
-            zoomUrlsData = new List<Tuple<string, string>>()
-            {
-                new Tuple<string, string>("aaa", "www.aaa"),
-                new Tuple<string, string>("bbb", "www.bbb"),
-                new Tuple<string, string>("ccc", "www.ccc")
-            };
+            data = new List<Tuple<string, string>>(){};
+            dataForSerialize = new List<string>();
         }
 
         // List中のn番目のデータ(room名とurlのタプル)を返す
         public Tuple<string, string> Get(int n)
         {
-            return zoomUrlsData[n];
+            return data[n];
         }
 
         // 新しいデータを追加
         public void Add(string roomName, string zoomUrl)
         {
-            zoomUrlsData.Add(new Tuple<string, string>(roomName, zoomUrl));
+            data.Add(new Tuple<string, string>(roomName, zoomUrl));
         }
 
         // データサイズを取得
         public int Count()
         {
-            return zoomUrlsData.Count;
+            return data.Count;
+        }
+    
+        // 要素数がn個のタプルのリストを、要素数が2n個のリストに変換する
+        // (タプルがJsonUtilityでserializeできないため)
+        public void OnBeforeSerialize()
+        {
+            dataForSerialize.Clear();
+            
+            foreach (Tuple<string, string> tupleData in data)
+            {
+                dataForSerialize.Add(tupleData.Item1);
+                dataForSerialize.Add(tupleData.Item2);
+            }
+        }
+
+        public void OnAfterDeserialize()
+        {
+            data.Clear();
+
+            int size = dataForSerialize.Count;
+            for (int index = 0; index < size; index += 2)
+            {
+                data.Add(new Tuple<string, string>(dataForSerialize[index], dataForSerialize[index + 1]));
+            }
         }
     }
 }
