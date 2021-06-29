@@ -37,7 +37,6 @@ namespace Tests
         [UnityTest]
         public IEnumerator InputZoomUrlTest() // 好きな名前をつける
         {
-            yield return new WaitForSeconds(1f); // 1秒待つ
             SetUp();
             
             InputField[] inputFields = homeCanvas.GetComponentsInChildren<InputField>();
