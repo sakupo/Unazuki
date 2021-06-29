@@ -199,8 +199,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 305980899}
   m_CullTransparentMesh: 0
-<<<<<<< HEAD
-=======
 --- !u!1 &438554639
 GameObject:
   m_ObjectHideFlags: 0
@@ -326,7 +324,6 @@ MonoBehaviour:
   inputRoomNametext: {fileID: 305980901}
   inputZoomUrlField: {fileID: 698061130}
   inputZoomUrltext: {fileID: 1326417637}
->>>>>>> e1b2230 (画面遷移用のボタンを複数表示)
 --- !u!1 &698061128
 GameObject:
   m_ObjectHideFlags: 0
@@ -906,10 +903,7 @@ RectTransform:
   - {fileID: 1724072439}
   - {fileID: 1179901442}
   - {fileID: 1794868260}
-<<<<<<< HEAD
-=======
   - {fileID: 2112456072}
->>>>>>> e1b2230 (画面遷移用のボタンを複数表示)
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1009,7 +1003,6 @@ CanvasRenderer:
   m_GameObject: {fileID: 1326417635}
   m_CullTransparentMesh: 0
 --- !u!1 &1489747225
-<<<<<<< HEAD
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1058,88 +1051,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 0.5}
-  m_RaycastTarget: 1
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 30
-    m_FontStyle: 2
-    m_BestFit: 0
-    m_MinSize: 3
-    m_MaxSize: 40
-    m_Alignment: 0
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: enter room name
---- !u!222 &1489747228
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1489747225}
-  m_CullTransparentMesh: 0
---- !u!1 &1724072438
-=======
->>>>>>> e1b2230 (画面遷移用のボタンを複数表示)
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1489747226}
-  - component: {fileID: 1489747228}
-  - component: {fileID: 1489747227}
-  m_Layer: 5
-  m_Name: Placeholder
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1489747226
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1489747225}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1794868260}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 7.5, y: -4}
-  m_SizeDelta: {x: -35, y: -20}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1489747227
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1489747225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-<<<<<<< HEAD
-=======
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 0.5}
   m_RaycastTarget: 1
@@ -1218,13 +1129,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4f4c905bcb3b834f85e5d945c59aa25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
->>>>>>> e1b2230 (画面遷移用のボタンを複数表示)
   inputRoomNameField: {fileID: 1794868262}
   inputRoomNametext: {fileID: 305980901}
   inputZoomUrlField: {fileID: 698061130}
   inputZoomUrltext: {fileID: 1326417637}
-<<<<<<< HEAD
-=======
 --- !u!114 &1724072441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1239,7 +1147,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 1229571180}
   baseRoomButton: {fileID: 2112456073}
->>>>>>> e1b2230 (画面遷移用のボタンを複数表示)
 --- !u!1 &1794868259
 GameObject:
   m_ObjectHideFlags: 0
@@ -1274,11 +1181,7 @@ RectTransform:
   - {fileID: 305980900}
   - {fileID: 1489747226}
   m_Father: {fileID: 1229571184}
-<<<<<<< HEAD
-  m_RootOrder: 3
-=======
   m_RootOrder: 4
->>>>>>> e1b2230 (画面遷移用のボタンを複数表示)
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
