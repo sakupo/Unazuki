@@ -84,11 +84,8 @@ namespace InputZoomUrl {
     	// roomのボタンが押されたときに呼ばれる関数
 	    void ClickRoomButton(int n)
     	{
-        	// Debug.Log(n + "-th room button is clicked!!!");
 	        Tuple<string, string> zoomUrlData = zoomUrlsData.Get(n);
     	    Debug.Log("room name:'" + zoomUrlData.Item1 + "'(url:'" + zoomUrlData.Item2 + "') is clicked!!!");
-	    
-			Debug.Log(JsonUtility.ToJson(zoomUrlsData));
 		}
 
 		void OnApplicationQuit(){
