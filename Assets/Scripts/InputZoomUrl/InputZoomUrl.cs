@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -34,14 +35,13 @@ namespace InputZoomUrl
         /// ボタンをクリックした時の処理
         public void OnClick()
         {
-            Dictionary<string, string> data = GetZoomInputData();
+            Tuple<string, string> data = GetZoomInputData();
         }
 
-        private Dictionary<string, string> GetZoomInputData()
+        private Tuple<string, string> GetZoomInputData()
         {
-            Dictionary<string, string> data = new Dictionary<string, string>();
-            data.Add(inputRoomNametext.text, inputZoomUrltext.text);
-            
+            Tuple<string, string> data = new Tuple<string, string>(inputRoomNametext.text, inputZoomUrltext.text);
+
             inputRoomNameField.text = "";
             inputZoomUrlField.text = "";
 
