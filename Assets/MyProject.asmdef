@@ -1,3 +1,4 @@
 ﻿{
-	"name": "MyProject"
+	"name": "MyProject",
+	"references": ["Unity.TextMeshPro", "Klak.Spout"]
 }
