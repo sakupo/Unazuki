@@ -26,9 +26,9 @@ namespace InputZoomUrl
         }
 
         // 新しいデータを追加
-        public void Add(string roomName, string zoomUrl)
+        public void Add(Tuple<string, string> newData)
         {
-            data.Add(new Tuple<string, string>(roomName, zoomUrl));
+            data.Add(newData);
         }
 
         // データサイズを取得

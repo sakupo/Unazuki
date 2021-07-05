@@ -88,6 +88,14 @@ namespace InputZoomUrl {
     	    Debug.Log("room name:'" + zoomUrlData.Item1 + "'(url:'" + zoomUrlData.Item2 + "') is clicked!!!");
 		}
 
+	    public void AddData(Tuple<string, string> data)
+	    {
+		    zoomUrlsData.Add(data);
+		    
+		    // 今追加したデータを描画
+		    DisplayRoomButton(zoomUrlsData.Count() - 1);
+	    }
+
 		void OnApplicationQuit(){
 			// アプリ終了時にデータを保存する
 			string savedData = JsonUtility.ToJson(zoomUrlsData);
