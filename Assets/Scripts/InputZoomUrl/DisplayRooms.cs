@@ -54,7 +54,8 @@ namespace InputZoomUrl {
 			string zoomUrl = zoomUrlData.Item2;
 
     	    Button clonedButton = Instantiate(baseRoomButton, canvas.transform);
-        	Vector3 position = ConvertPosition(n);
+        	clonedButton.gameObject.SetActive(true);  // 表示させる
+            Vector3 position = ConvertPosition(n);
 	        clonedButton.transform.localPosition = position;
 
         	foreach (Text text in clonedButton.GetComponentsInChildren<Text>())

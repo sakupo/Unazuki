@@ -324,6 +324,7 @@ MonoBehaviour:
   inputRoomNametext: {fileID: 305980901}
   inputZoomUrlField: {fileID: 698061130}
   inputZoomUrltext: {fileID: 1326417637}
+  gameObject: {fileID: 1724072438}
 --- !u!1 &698061128
 GameObject:
   m_ObjectHideFlags: 0
@@ -504,6 +505,7 @@ MonoBehaviour:
   inputRoomNametext: {fileID: 305980901}
   inputZoomUrlField: {fileID: 698061130}
   inputZoomUrltext: {fileID: 1326417637}
+  gameObject: {fileID: 1724072438}
 --- !u!1 &814346520
 GameObject:
   m_ObjectHideFlags: 0
@@ -729,6 +731,7 @@ MonoBehaviour:
   inputRoomNametext: {fileID: 305980901}
   inputZoomUrlField: {fileID: 698061130}
   inputZoomUrltext: {fileID: 1326417637}
+  gameObject: {fileID: 1179901441}
 --- !u!1 &1206748893
 GameObject:
   m_ObjectHideFlags: 0
@@ -1133,6 +1136,7 @@ MonoBehaviour:
   inputRoomNametext: {fileID: 305980901}
   inputZoomUrlField: {fileID: 698061130}
   inputZoomUrltext: {fileID: 1326417637}
+  gameObject: {fileID: 1724072438}
 --- !u!114 &1724072441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1204,6 +1208,7 @@ MonoBehaviour:
   inputRoomNametext: {fileID: 1326417637}
   inputZoomUrlField: {fileID: 1794868262}
   inputZoomUrltext: {fileID: 305980901}
+  gameObject: {fileID: 1724072438}
 --- !u!114 &1794868262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1506,7 +1511,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2112456072
 RectTransform:
   m_ObjectHideFlags: 0
