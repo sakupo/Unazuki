@@ -3,6 +3,7 @@
   <component name="ContentModelUserStore">
     <attachedFolders />
     <explicitIncludes>
+      <Path>Assets</Path>
       <Path>Library/PackageCache/com.unity.collab-proxy@1.2.16</Path>
       <Path>Library/PackageCache/com.unity.ext.nunit@1.0.6</Path>
       <Path>Library/PackageCache/com.unity.ide.rider@1.2.1</Path>
@@ -15,6 +16,7 @@
     </explicitIncludes>
     <explicitExcludes>
       <Path>.git</Path>
+      <Path>.github</Path>
       <Path>.idea</Path>
       <Path>Library</Path>
       <Path>Logs</Path>
