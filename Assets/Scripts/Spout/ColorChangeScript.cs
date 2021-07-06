@@ -1,6 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using Unazuki;
+
+
+using System.Linq;
 namespace Spout {
     public class ColorChangeScript : MonoBehaviour
     {
@@ -26,6 +31,15 @@ namespace Spout {
         // Update is called once per frame
         void Update()
         {
+            Scene scene = SceneManager.GetSceneByName("MainScene");
+            if (scene != null)
+            {
+                Canvas mainCanvas = SceneManager.GetSceneByName("MainScene").GetRootGameObjects()
+                    .First(obj => obj.GetComponent<Canvas>() != null)
+                    .GetComponent<Canvas>();
+                var unazukiBar = mainCanvas.GetComponentInChildren<UnazukiBar>();
+                unazuki = unazukiBar.Value;
+            }
             Color newColor = UnazukiColor();
             GetComponent<Renderer>().material.color = newColor;
         }
