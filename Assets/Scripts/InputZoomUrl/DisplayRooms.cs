@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace InputZoomUrl {
 	public class DisplayRooms : MonoBehaviour
@@ -58,7 +59,7 @@ namespace InputZoomUrl {
             Vector3 position = ConvertPosition(n);
 	        clonedButton.transform.localPosition = position;
 
-        	foreach (Text text in clonedButton.GetComponentsInChildren<Text>())
+        	foreach (TextMeshProUGUI text in clonedButton.GetComponentsInChildren<TextMeshProUGUI>())
 	        {
     	        if (text.name == "RoomName")
         	    {

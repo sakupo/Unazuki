@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace InputZoomUrl
 {
@@ -11,10 +12,8 @@ namespace InputZoomUrl
     {
 
         //オブジェクトと結びつける
-        public InputField inputRoomNameField;
-        public Text inputRoomNametext;
-        public InputField inputZoomUrlField;
-        public Text inputZoomUrltext;
+        public TMP_InputField  inputRoomNameField;
+        public TMP_InputField  inputZoomUrlField;
         
         public GameObject gameObject;
         private DisplayRooms displayRooms;
@@ -22,19 +21,10 @@ namespace InputZoomUrl
         void Start()
         {
             //Componentを扱えるようにする
-            inputRoomNameField = inputRoomNameField.GetComponent<InputField>();
-            inputRoomNametext = inputRoomNametext.GetComponent<Text>();
-            inputZoomUrlField = inputZoomUrlField.GetComponent<InputField>();
-            inputZoomUrltext = inputZoomUrltext.GetComponent<Text>();
+            inputRoomNameField = inputRoomNameField.GetComponent<TMP_InputField>();
+            inputZoomUrlField = inputZoomUrlField.GetComponent<TMP_InputField>();
             
             displayRooms = gameObject.GetComponent<DisplayRooms>();
-        }
-
-        public void InputText()
-        {
-            //テキストにinputZoomUrlFieldの内容を反映
-            inputRoomNametext.text = inputRoomNameField.text;
-            inputZoomUrltext.text = inputZoomUrlField.text;
         }
 
         /// ボタンをクリックした時の処理
@@ -48,11 +38,11 @@ namespace InputZoomUrl
         private Tuple<string, string> GetZoomInputData()
         {
             // どちらかが空欄なら何もしない
-            if (inputRoomNametext.text == "" || inputZoomUrltext.text == "")
+            if (inputRoomNameField.text == "" || inputZoomUrlField.text == "")
                 return null;
             
-            Tuple<string, string> data = new Tuple<string, string>(inputRoomNametext.text, inputZoomUrltext.text);
-
+            Tuple<string, string> data = new Tuple<string, string>(inputRoomNameField.text, inputZoomUrlField.text);
+            
             inputRoomNameField.text = "";
             inputZoomUrlField.text = "";
 
