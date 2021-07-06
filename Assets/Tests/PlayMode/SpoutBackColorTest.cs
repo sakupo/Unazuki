@@ -16,6 +16,7 @@ namespace Tests
         private Canvas mainCanvas;
         ColorChangeScript quad;
 
+
         [SetUp]
         public void SetUp()
         {
@@ -25,7 +26,7 @@ namespace Tests
                 quad = GameObject.Find("Quad")?.GetComponent<ColorChangeScript>();
             };
 
-            
+
         }
 
         // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
