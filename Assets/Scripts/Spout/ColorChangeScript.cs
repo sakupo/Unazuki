@@ -22,6 +22,19 @@ namespace Spout {
                 unazuki = value;
             }
         }
+        [SerializeField]
+        private bool lowSaturation;
+        public bool LowSaturation
+        {
+            get
+            {
+                return lowSaturation;
+            }
+            set
+            {
+                lowSaturation = value;
+            }
+        }
         // Start is called before the first frame update
         void Start()
         {
@@ -40,7 +53,15 @@ namespace Spout {
                 var unazukiBar = mainCanvas.GetComponentInChildren<UnazukiBar>();
                 unazuki = unazukiBar.Value;
             }
-            Color newColor = UnazukiColor();
+            Color newColor;
+            if (lowSaturation)
+            {
+                newColor = UnazukiColorLowSaturation();
+            }
+            else
+            {
+                newColor = UnazukiColor();
+            }
             GetComponent<Renderer>().material.color = newColor;
         }
 
@@ -50,6 +71,14 @@ namespace Spout {
             float g = 0.5f - Mathf.Abs(unazuki - 0.5f) * 1.0f + 0.2f - unazuki * 0.1f;
             float b = (1 - unazuki) * 0.4f + 0.1f;
             return new Color(r, g, b, 1);
+        }
+
+        public Color UnazukiColorLowSaturation()
+        {
+            float r = unazuki * 0.7f + 0.1f;
+            float g = 0.5f - Mathf.Abs(unazuki - 0.5f) * 1.0f + 0.2f - unazuki * 0.1f;
+            float b = (1 - unazuki) * 0.4f + 0.1f;
+            return new Color(r*0.6f+0.3f, g * 0.6f + 0.3f, b * 0.6f + 0.3f, 1);
         }
     }
 }
