@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace InputZoomUrl {
 	public class DisplayRooms : MonoBehaviour
@@ -54,10 +55,11 @@ namespace InputZoomUrl {
 			string zoomUrl = zoomUrlData.Item2;
 
     	    Button clonedButton = Instantiate(baseRoomButton, canvas.transform);
-        	Vector3 position = ConvertPosition(n);
+        	clonedButton.gameObject.SetActive(true);  // 表示させる
+            Vector3 position = ConvertPosition(n);
 	        clonedButton.transform.localPosition = position;
 
-        	foreach (Text text in clonedButton.GetComponentsInChildren<Text>())
+        	foreach (TextMeshProUGUI text in clonedButton.GetComponentsInChildren<TextMeshProUGUI>())
 	        {
     	        if (text.name == "RoomName")
         	    {
@@ -87,6 +89,14 @@ namespace InputZoomUrl {
 	        Tuple<string, string> zoomUrlData = zoomUrlsData.Get(n);
     	    Debug.Log("room name:'" + zoomUrlData.Item1 + "'(url:'" + zoomUrlData.Item2 + "') is clicked!!!");
 		}
+
+	    public void AddData(Tuple<string, string> data)
+	    {
+		    zoomUrlsData.Add(data);
+		    
+		    // 今追加したデータを描画
+		    DisplayRoomButton(zoomUrlsData.Count() - 1);
+	    }
 
 		void OnApplicationQuit(){
 			// アプリ終了時にデータを保存する
