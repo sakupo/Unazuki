@@ -19,7 +19,13 @@ namespace Utility
 
     public void HideCanvas()
     {
+      Final();
       gameObject.SetActive(false);
+    }
+
+    protected virtual void Final()
+    {
+      /* do nothing */
     }
 
     protected virtual void Init()
@@ -87,6 +93,16 @@ namespace Utility
     public static Canvas GetCanvasFromScene(string sceneName)
     {
       return GetComponentFromScene<Canvas>(sceneName);
+    }
+    
+    /// <summary>
+    /// scene直下にあるCanvasExを返します
+    /// </summary>
+    /// <param name="sceneName"></param>
+    /// <returns></returns>
+    public static CanvasEx GetCanvasExFromScene(string sceneName)
+    {
+      return GetComponentFromScene<CanvasEx>(sceneName);
     }
   }
 }
