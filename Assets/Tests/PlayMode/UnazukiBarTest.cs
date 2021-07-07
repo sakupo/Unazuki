@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 using Unazuki;
+using Utility;
 
 namespace Tests
 {
@@ -26,9 +27,7 @@ namespace Tests
       if (mainCanvas == null)
       {
         // mainCanvasの初期化
-        mainCanvas = SceneManager.GetSceneByName("MainScene").GetRootGameObjects()
-          .First(obj => obj.GetComponent<Canvas>() != null)
-          .GetComponent<Canvas>();
+        mainCanvas = CanvasEx.GetCanvasFromScene("MainScene");
       }
     }
 

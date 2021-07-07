@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Klak.Spout;
 using UnityEngine;
@@ -9,16 +10,11 @@ using Utility;
 
 namespace Main
 {
-  public class SpoutCamStateButton : MonoBehaviour
+  public class SpoutCamStateButton : MonoBehaviour, IObservable<bool>
   {
     [SerializeField] private Image background;
     [SerializeField] private TextMeshPro label;
-    private SpoutSender spoutSender;
-
-    private void Start()
-    {
-      spoutSender = CanvasEx.GetComponentFromScene<SpoutSender>("SpoutScene");
-    }
+    private readonly List<IObserver<bool>> spoutSenders = new List<IObserver<bool>>();
 
     public void OnClick(bool isOn)
     {
@@ -26,13 +22,41 @@ namespace Main
       {
         background.color = Color.white;
         label.text = "カメラ: <color=#ff0000>ON</color>";
-        spoutSender.enabled = true;
       }
       else
       {
         background.color = Color.gray;
         label.text = "カメラ: <color=#333333>OFF</color>";
-        spoutSender.enabled = false;
+      }
+
+      // SpoutSenderへのUpdate通知
+      foreach (var spoutSender in spoutSenders)
+      {
+        spoutSender.OnNext(isOn);
+      }
+    }
+
+    public IDisposable Subscribe(IObserver<bool> observer)
+    {
+      spoutSenders.Add(observer);
+      return new Unsubscriber(spoutSenders, observer);
+    }
+
+    private class Unsubscriber : IDisposable
+    {
+      private readonly List<IObserver<bool>> observers;
+      private readonly IObserver<bool> observer;
+
+      public Unsubscriber(List<IObserver<bool>> observers, IObserver<bool> observer)
+      {
+        this.observers = observers;
+        this.observer = observer;
+      }
+
+      public void Dispose()
+      {
+        if (observer != null && observers.Contains(observer))
+          observers.Remove(observer);
       }
     }
   }
