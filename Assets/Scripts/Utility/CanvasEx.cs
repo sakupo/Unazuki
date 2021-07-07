@@ -48,7 +48,8 @@ namespace Utility
     /// <returns></returns>
     public static GameObject[] GetRootObjectsFromScene(string sceneName)
     {
-      return SceneManager.GetSceneByName(sceneName).GetRootGameObjects();
+      GameObject[] objs = SceneManager.GetSceneByName(sceneName).GetRootGameObjects();
+      return objs;
     }
     
     /// <summary>
@@ -57,12 +58,25 @@ namespace Utility
     /// <param name="sceneName"></param>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    public static T GetComponentFromScene<T>(string sceneName)
+    public static T GetComponentFromScene<T>(string sceneName) where T : Component
     {
       var component = GetRootObjectsFromScene(sceneName)
         .First(obj => obj.GetComponent<T>() != null)
         .GetComponent<T>();
       return component;
+    }
+
+    /// <summary>
+    /// scene直下にあるCanvasの子オブジェクトにある任意のコンポーネントを返します
+    /// </summary>
+    /// <param name="sceneName"></param>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
+    public static T GetComponentInCanvasChildrenFromScene<T>(string sceneName) where T : Component
+    {
+      var canvas = GetCanvasFromScene(sceneName);
+      var childComponent = canvas.GetComponentInChildren<T>();
+      return childComponent;
     }
 
     /// <summary>
