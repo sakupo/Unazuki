@@ -13,27 +13,20 @@ namespace Settings
         public GameObject selectDevice;
         private bool show = false;
 
+        public GameObject parent;
+
 
         // Start is called before the first frame update
         void Start()
         {
-            settingsButton = GetComponent<Button>();
-            inputAPI = GameObject.FindGameObjectWithTag("InputAPI");
-            applyAPI = GameObject.FindGameObjectWithTag("ApplyAPI");
-            selectDevice = GameObject.FindGameObjectWithTag("AudioDevice");
-            // settingsButton以外非表示
-            inputAPI.SetActive(show);
-            applyAPI.SetActive(show);
-            selectDevice.SetActive(show);
+            parent.SetActive(show);
         }
 
         // ボタンクリック時の処理
-        public void onClick()
+        public void OnClick()
         {
             show = !show;
-            inputAPI.SetActive(show);
-            applyAPI.SetActive(show);
-            selectDevice.SetActive(show);
+            parent.SetActive(show);
             Debug.Log("clicked " + show);
         }
 
