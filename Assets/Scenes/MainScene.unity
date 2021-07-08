@@ -1079,6 +1079,7 @@ MonoBehaviour:
   mark: {fileID: 1784490474}
   label: {fileID: 1167152417}
   labelBackGround: {fileID: 1116813238}
+  slider: {fileID: 1174061767}
 --- !u!114 &117429662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4835,7 +4836,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ddde1292bcca4f245a23081a486a6b00, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5495e012720ffde4194fe778e521e877, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
