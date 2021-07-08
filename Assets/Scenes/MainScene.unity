@@ -2271,6 +2271,7 @@ GameObject:
   - component: {fileID: 1495684869}
   - component: {fileID: 1495684868}
   - component: {fileID: 1495684871}
+  - component: {fileID: 1495684872}
   m_Layer: 5
   m_Name: ManShapeMenu
   m_TagString: Untagged
@@ -2388,9 +2389,29 @@ MonoBehaviour:
   - {fileID: -5495902117074765545, guid: 6ec160c77dc122645b8bd98c93645d80, type: 3}
   - {fileID: -5495902117074765545, guid: fe31e89e2385cc24382dfd1369333373, type: 3}
   - {fileID: -5495902117074765545, guid: 497ccc2c77a2ea649ad700bd494bcaf9, type: 3}
+  shapeNames:
+  - man
+  - cat
+  - ok
+  - ng
+  - question
+  - snow
+  - star
   menu: {fileID: 544711365}
   menuItemPrefab: {fileID: 3071206685295847986, guid: 54d4da22a8dd845428f2256f8e236a82,
     type: 3}
+--- !u!114 &1495684872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1495684866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b03cc4bcc4e54d83b6f28e7de4e4e0fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1545041338
 GameObject:
   m_ObjectHideFlags: 0
