@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using Utility;
 
 namespace Main
 {
@@ -7,8 +8,10 @@ namespace Main
   {
     public void OnClick()
     {
-      SceneManager.UnloadSceneAsync("MainScene");
-      SceneManager.LoadScene("HomeScene", LoadSceneMode.Additive);
+      var mainCanvasEx = CanvasEx.GetCanvasExFromScene("MainScene");
+      mainCanvasEx.HideCanvas();
+      var homeCanvasEx = CanvasEx.GetCanvasExFromScene("HomeScene");
+      homeCanvasEx.ShowCanvas();
     }
   }
 }
