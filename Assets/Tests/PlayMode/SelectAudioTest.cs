@@ -11,11 +11,11 @@ using Settings;
 
 namespace Tests
 {
-    public class SettingButtonTestPlay
+    public class SelectAudioTestPlay
     {
         private Canvas settingsCanvas;
-
-        // テスト開始時に一度だけ呼ばれる
+        
+        // テスト開始時一度だけ呼ばれる
         [OneTimeSetUp]
         public void OneTimeSetUp()
         {
@@ -28,25 +28,26 @@ namespace Tests
         {
             if (settingsCanvas == null)
             {
-                // settingsCanvasの初期化
+                // SettingsCanvasの初期化
                 settingsCanvas = SceneManager.GetSceneByName("SettingsScene").GetRootGameObjects()
                     .First(obj => obj.GetComponent<Canvas>() != null)
                     .GetComponent<Canvas>();
             }
         }
-        
 
         // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
         // `yield return null;` to skip a frame.
         [UnityTest]
-        public IEnumerator SettingButtonTest()
+        public IEnumerator SelectAudioTest()
         {
+            // Use the Assert class to test conditions.
+            // Use yield to skip a frame.
             // テストごとの初期化
             SetUp();
-            // settingsButton以外が隠されているか
-            var settings = settingsCanvas.GetComponentInChildren<SettingsButton>();
-            var parent = settings.parent;
-            Assert.IsFalse(parent.activeSelf);
+
+            // キー"audio"に0が保存されている
+            int preserved = PlayerPrefs.GetInt("audio");
+            Assert.AreEqual(0, preserved);
             yield return null;
         }
     }
