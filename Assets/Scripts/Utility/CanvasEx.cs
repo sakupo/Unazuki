@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -103,6 +104,20 @@ namespace Utility
     public static CanvasEx GetCanvasExFromScene(string sceneName)
     {
       return GetComponentFromScene<CanvasEx>(sceneName);
+    }
+    
+    /// <summary>
+    /// SpoutSceneとUnazukiSceneのCanvasExを取得
+    /// </summary>
+    /// <returns></returns>
+    public List<CanvasEx> GetCanvasExsFromScene(params string[] sceneNames)
+    {
+      var canvasExs = sceneNames.Select(sceneName =>
+      {
+        var canvasEx = GetCanvasExFromScene(sceneName);
+        return canvasEx;
+      }).ToList();
+      return canvasExs;
     }
   }
 }

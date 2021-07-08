@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Utility;
 
@@ -6,13 +8,8 @@ namespace Main
 {
   public class MainCanvas : UICanvas
   {
-    private CanvasEx spoutCanvasEx;
-    private CanvasEx unazukiCanvasEx;
-
-    private void Awake()
+    protected override void InitAtStart()
     {
-      spoutCanvasEx = CanvasEx.GetCanvasExFromScene("SpoutScene");
-      unazukiCanvasEx = CanvasEx.GetCanvasExFromScene("UnazukiScene");
 #if !DEBUG
       HideCanvas();
 #endif
@@ -20,16 +17,22 @@ namespace Main
 
     protected override void Init()
     {
+      List<CanvasEx> canvasExs = GetCanvasExsFromScene("SpoutScene", "UnazukiScene");
       // main canvasと同時に起動
-      spoutCanvasEx.ShowCanvas();
-      unazukiCanvasEx.ShowCanvas();
+      foreach (var canvasEx in canvasExs)
+      {
+        canvasEx.ShowCanvas();
+      }
     }
 
     protected override void Final()
     {
+      List<CanvasEx> canvasExs = GetCanvasExsFromScene("SpoutScene", "UnazukiScene");
       // main canvasと同時に終了
-      spoutCanvasEx.HideCanvas();
-      unazukiCanvasEx.HideCanvas();
+      foreach (var canvasEx in canvasExs)
+      {
+        canvasEx.HideCanvas();
+      }
     }
   }
 }
