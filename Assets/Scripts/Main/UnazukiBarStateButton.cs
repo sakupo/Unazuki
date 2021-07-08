@@ -1,27 +1,23 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using Klak.Spout;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using UnityEngine.SceneManagement;
-using Utility;
 
 namespace Main
 {
-  public class SpoutCamStateButton : ObservableToggleButton
+  public class UnazukiBarStateButton : ObservableToggleButton
   {
     protected override void TurnOn()
     {
       background.color = Color.white;
-      label.text = "カメラ: <color=#ff0000>ON</color>";
+      label.text = "うなずきバー: <color=#ff0000>有効</color>";
     }
 
     protected override void TurnOff()
     {
       background.color = Color.gray;
-      label.text = "カメラ: <color=#333333>OFF</color>";
+      label.text = "うなずきバー: <color=#333333>無効</color>";
     }
   }
 }
