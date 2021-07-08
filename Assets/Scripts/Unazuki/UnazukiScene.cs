@@ -7,10 +7,11 @@ namespace Unazuki
   public class UnazukiScene : MonoBehaviour
   {
     [SerializeField] private UnazukiProcessor processor;
-    private UnazukiExtractor extractor;
+    public UnazukiExtractor Extractor { get; private set; }
+
     void Awake()
     {
-      extractor = new UnazukiExtractor(processor) {FaceBasePos = new Point(0, 240)};
+      Extractor = new UnazukiExtractor(processor) {FaceBasePos = new Point(0, 240)};
     }
   }
 }
