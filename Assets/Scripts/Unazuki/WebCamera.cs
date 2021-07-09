@@ -33,7 +33,7 @@ namespace Unazuki
 		/// </summary>
 		protected Unity.TextureConversionParams TextureParameters { get; private set; }
 
-		// 現在のカメラデバイスをPlayerPrefsに保存するためのKey
+		// 現在のカメラをPlayerPrefsに保存するためのKey
 		public static readonly string PlayerPrefsKeyCamera = "camera";
 		/// <summary>
 		/// Camera device name, full list can be taken from WebCamTextures.devices enumerator
@@ -115,6 +115,9 @@ namespace Unazuki
 			SetDevice();
 		}
 
+		/// <summary>
+		/// カメラを設定します
+		/// </summary>
 		private void SetDevice()
 		{
 			// cameraがないとき
@@ -125,6 +128,7 @@ namespace Unazuki
 				// cameraが未設定のとき、一番初めのcameraを設定
 				DeviceName = WebCamTexture.devices[0].name;
 				PlayerPrefs.SetString(PlayerPrefsKeyCamera, DeviceName);
+				PlayerPrefs.Save();
 				return;
 			}
 			// cameraが設定されているとき
