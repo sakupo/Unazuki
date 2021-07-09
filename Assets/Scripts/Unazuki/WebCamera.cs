@@ -33,6 +33,8 @@ namespace Unazuki
 		/// </summary>
 		protected Unity.TextureConversionParams TextureParameters { get; private set; }
 
+		// 現在のカメラデバイスをPlayerPrefsに保存するためのKey
+		public static readonly string PlayerPrefsKeyCamera = "camera";
 		/// <summary>
 		/// Camera device name, full list can be taken from WebCamTextures.devices enumerator
 		/// </summary>
@@ -110,8 +112,23 @@ namespace Unazuki
 		/// </summary>
 		protected virtual void Awake()
 		{
-			if (WebCamTexture.devices.Length > 0)
-				DeviceName = WebCamTexture.devices[WebCamTexture.devices.Length - 1].name;
+			SetDevice();
+		}
+
+		private void SetDevice()
+		{
+			// cameraがないとき
+			if (WebCamTexture.devices.Length == 0) return;
+			// 以下、cameraがあるとき
+			if (!PlayerPrefs.HasKey(PlayerPrefsKeyCamera))
+			{
+				// cameraが未設定のとき、一番初めのcameraを設定
+				DeviceName = WebCamTexture.devices[0].name;
+				PlayerPrefs.SetString(PlayerPrefsKeyCamera, DeviceName);
+				return;
+			}
+			// cameraが設定されているとき
+			DeviceName = PlayerPrefs.GetString(PlayerPrefsKeyCamera);
 		}
 
 		void OnDestroy() 
@@ -136,6 +153,12 @@ namespace Unazuki
 		/// </summary>
 		private void Update ()
 		{
+			// cameraがないとき
+			if (!PlayerPrefs.HasKey(PlayerPrefsKeyCamera))
+			{
+				SetDevice();
+			}
+
 			if (webCamTexture != null && webCamTexture.didUpdateThisFrame)
 			{
 				// this must be called continuously
