@@ -38,7 +38,7 @@ namespace Unazuki
 		/// <summary>
 		/// Camera device name, full list can be taken from WebCamTextures.devices enumerator
 		/// </summary>
-		public string DeviceName
+		protected string DeviceName
 		{
 			get
 			{
@@ -118,21 +118,36 @@ namespace Unazuki
 		/// <summary>
 		/// カメラを設定します
 		/// </summary>
-		private void SetDevice()
+		private bool SetDevice()
 		{
 			// cameraがないとき
-			if (WebCamTexture.devices.Length == 0) return;
+			if (WebCamTexture.devices.Length == 0) return false;
 			// 以下、cameraがあるとき
 			if (!PlayerPrefs.HasKey(PlayerPrefsKeyCamera))
 			{
 				// cameraが未設定のとき、一番初めのcameraを設定
-				DeviceName = WebCamTexture.devices[0].name;
+				try
+				{
+					DeviceName = WebCamTexture.devices[0].name;
+				}
+				catch (ArgumentException e)
+				{
+					return false;
+				}
 				PlayerPrefs.SetString(PlayerPrefsKeyCamera, DeviceName);
 				PlayerPrefs.Save();
-				return;
+				return true;
 			}
 			// cameraが設定されているとき
-			DeviceName = PlayerPrefs.GetString(PlayerPrefsKeyCamera);
+			try
+			{
+				DeviceName = PlayerPrefs.GetString(PlayerPrefsKeyCamera);
+			}
+			catch (ArgumentException e)
+			{
+				return false;
+			}
+			return true;
 		}
 
 		void OnDestroy() 
@@ -157,11 +172,16 @@ namespace Unazuki
 		/// </summary>
 		private void Update ()
 		{
-			// cameraがないとき
 			if (!PlayerPrefs.HasKey(PlayerPrefsKeyCamera))
 			{
-				SetDevice();
-			}
+				// cameraが未設定のとき
+				bool isSetDevice = SetDevice();
+				if (!isSetDevice)
+				{
+					// cameraがないとき
+					return;
+				}
+			}	
 
 			if (webCamTexture != null && webCamTexture.didUpdateThisFrame)
 			{
