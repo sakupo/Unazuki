@@ -27,6 +27,7 @@ namespace Spout
         private readonly int SampleNum = (2 << 9);
         AudioSource m_source;
         float[] currentValues;
+        int deviceIndex;
 
 
         // Use this for initialization
@@ -37,14 +38,17 @@ namespace Spout
             currentValues = new float[SampleNum];
 
             AudioSource aud = GetComponent<AudioSource>();
+            /*
             for (int i = 0; i < Microphone.devices.Length; i++)
             {
                 Debug.Log("device name : " + Microphone.devices[i]);
             }
+            */
 
             if ((aud != null) && (Microphone.devices.Length > 0)) // オーディオソースとマイクがある
             {
-                string devName = Microphone.devices[0]; // 複数見つかってもとりあえず0番目のマイクを使用
+                deviceIndex = PlayerPrefs.GetInt("audio", 0);
+                string devName = Microphone.devices[deviceIndex];
                 int minFreq, maxFreq;
                 Microphone.GetDeviceCaps(devName, out minFreq, out maxFreq); // 最大最小サンプリング数を得る
 
@@ -60,6 +64,20 @@ namespace Spout
         // Update is called once per frame
         void Update()
         {
+            if(deviceIndex != PlayerPrefs.GetInt("audio", 0))
+            {
+                deviceIndex = PlayerPrefs.GetInt("audio", 0);
+                string devName = Microphone.devices[deviceIndex];
+                int minFreq, maxFreq;
+                Microphone.GetDeviceCaps(devName, out minFreq, out maxFreq); // 最大最小サンプリング数を得る
+
+                int ms = minFreq / SampleNum; // サンプリング時間を適切に取る
+                m_source.loop = true; // ループにする
+                m_source.clip = Microphone.Start(devName, true, ms, minFreq); // clipをマイクに設定
+                while (!(Microphone.GetPosition(devName) > 0)) { } // きちんと値をとるために待つ
+                Microphone.GetPosition(null);
+                m_source.Play();
+            }
             m_source.GetSpectrumData(currentValues, 0, FFTWindow.Hamming);
             float sum = 0f;
             for (int i = 0; i < currentValues.Length; ++i)
