@@ -8,9 +8,6 @@ namespace Settings
     public class SettingsButton : MonoBehaviour
     {
         public Button settingsButton;
-        public GameObject inputAPI;
-        public GameObject applyAPI;
-        public GameObject selectDevice;
         private bool show = false;
 
         public GameObject parent;
@@ -20,6 +17,8 @@ namespace Settings
         void Start()
         {
             parent.SetActive(show);
+            // オーディオ、カメラのデフォルト値の設定
+            
         }
 
         // ボタンクリック時の処理
