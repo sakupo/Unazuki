@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using Main;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utility;
 
 public class ChangeSoundShape : MonoBehaviour
 {
@@ -25,21 +27,33 @@ public class ChangeSoundShape : MonoBehaviour
 
     public int nowMeshNum;
     MeshFilter meshFilter;
+    private ManShapeController shapeCtrl;
+
     // Start is called before the first frame update
     void Start()
     {
         nowMeshNum = 0;
         meshFilter = manPrefab.GetComponent<MeshFilter>();
+        shapeCtrl = CanvasEx.GetComponentInCanvasChildrenFromScene<ManShapeController>("MainScene");
     }
 
     // Update is called once per frame
     void Update()
     {
+        /*
         if (test != nowMeshNum)
         {
             ChangeMesh(test);
             Debug.Log("Change mesh");
         }
+        */
+        int value = shapeCtrl.CurrentShapeNumber;
+        if (value != nowMeshNum)
+        {
+            ChangeMesh(value);
+            Debug.Log("Change mesh");
+        }
+
     }
 
     void ChangeMesh(int value)

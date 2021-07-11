@@ -67,18 +67,18 @@ namespace Spout {
 
         public Color UnazukiColor()
         {
-            float r = unazuki * 0.7f + 0.1f;
-            float g = 0.5f - Mathf.Abs(unazuki - 0.5f) * 1.0f + 0.2f - unazuki * 0.1f;
-            float b = (1 - unazuki) * 0.4f + 0.1f;
+            float r = unazuki * 0.4f + 0.15f + unazuki * 0.15f;
+            float g = 0.2f - Mathf.Abs(unazuki - 0.5f) * 0.4f + 0.15f + unazuki * 0.15f;
+            float b = (1 - unazuki) * 0.2f + 0.1f + unazuki * 0.2f;
             return new Color(r, g, b, 1);
         }
 
         public Color UnazukiColorLowSaturation()
         {
-            float r = unazuki * 0.7f + 0.1f;
-            float g = 0.5f - Mathf.Abs(unazuki - 0.5f) * 1.0f + 0.2f - unazuki * 0.1f;
-            float b = (1 - unazuki) * 0.4f + 0.1f;
-            return new Color(r*0.6f+0.3f, g * 0.6f + 0.3f, b * 0.6f + 0.3f, 1);
+            float r = unazuki * 0.4f + 0.15f + unazuki * 0.15f;
+            float g = 0.2f - Mathf.Abs(unazuki - 0.5f) * 0.4f + 0.15f + unazuki * 0.15f;
+            float b = (1 - unazuki) * 0.2f + 0.1f + unazuki * 0.2f;
+            return new Color(r*0.6f+0.2f + unazuki*0.2f, g * 0.6f + 0.2f + unazuki*0.2f, b * 0.6f + 0.2f + unazuki*0.2f, 1);
         }
     }
 }
