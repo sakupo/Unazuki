@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
@@ -14,6 +15,7 @@ namespace InputZoomUrl {
 	    private float buttonWidth;
     	private float buttonHeight;
 	    private ZoomUrlsData zoomUrlsData;  // room名とurlのペアを全て保存するデータ構造
+	    private Tuple<string, string> clickedRoom;  // クリックされたroomデータを保持
     
     
 	    void Start()
@@ -86,9 +88,17 @@ namespace InputZoomUrl {
     	// roomのボタンが押されたときに呼ばれる関数
 	    void ClickRoomButton(int n)
     	{
-	        Tuple<string, string> zoomUrlData = zoomUrlsData.Get(n);
-    	    Debug.Log("room name:'" + zoomUrlData.Item1 + "'(url:'" + zoomUrlData.Item2 + "') is clicked!!!");
+	        clickedRoom = zoomUrlsData.Get(n);
+	        
+            canvas.SetActive(false);  // HomeSceneのcanvasを表示させないようにする
+            SceneManager.LoadScene("MainScene", LoadSceneMode.Additive);
 		}
+
+	    // クリックされたroom情報を取り出す。主にMainSceneから呼ばれる
+	    public Tuple<string, string> getClickedRoom()
+	    {
+		    return clickedRoom;
+	    }
 
 	    public void AddData(Tuple<string, string> data)
 	    {
