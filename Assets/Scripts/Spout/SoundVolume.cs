@@ -38,12 +38,6 @@ namespace Spout
             currentValues = new float[SampleNum];
 
             AudioSource aud = GetComponent<AudioSource>();
-            /*
-            for (int i = 0; i < Microphone.devices.Length; i++)
-            {
-                Debug.Log("device name : " + Microphone.devices[i]);
-            }
-            */
 
             if ((aud != null) && (Microphone.devices.Length > 0)) // オーディオソースとマイクがある
             {
