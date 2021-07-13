@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
+using TMPro;
 
 namespace Tests
 {
@@ -39,16 +40,15 @@ namespace Tests
         {
             SetUp();
             
-            InputField[] inputFields = homeCanvas.GetComponentsInChildren<InputField>();
+            TMP_InputField[] inputFields = homeCanvas.GetComponentsInChildren<TMP_InputField>();
             
             // 正しいコンポーネントが得られているか
-            InputField inputZoomUrlField = inputFields[0];
-            Assert.AreEqual(inputZoomUrlField.name, "InputZoomUrlField");
-
-            InputField inputRoomNameField = inputFields[1];
-            Assert.AreEqual(inputRoomNameField.name, "InputRoomNameField");
-
+            TMP_InputField inputZoomUrlField = inputFields[0];
+            Assert.AreEqual(inputZoomUrlField.name, "InputRoomNameField");
             
+            TMP_InputField inputRoomNameField = inputFields[1];
+            Assert.AreEqual(inputRoomNameField.name, "InputZoomUrlField");
+
             yield return null;
         }
     }

@@ -1,6 +1,6 @@
 {
     "name": "PlayMode",
-    "references": ["MyProject"],
+    "references": ["MyProject", "Unity.TextMeshPro"],
     "optionalUnityReferences": [
         "TestAssemblies"
     ]
