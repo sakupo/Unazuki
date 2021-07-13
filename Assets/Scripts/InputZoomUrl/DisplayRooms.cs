@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Utility;
 using TMPro;
 
 namespace InputZoomUrl {
@@ -89,10 +90,12 @@ namespace InputZoomUrl {
 	    void ClickRoomButton(int n)
     	{
 	        clickedRoom = zoomUrlsData.Get(n);
-	        
-            canvas.SetActive(false);  // HomeSceneのcanvasを表示させないようにする
-            SceneManager.LoadScene("MainScene", LoadSceneMode.Additive);
-		}
+            
+            var homeCanvasEx = CanvasEx.GetCanvasExFromScene("HomeScene");
+            homeCanvasEx.HideCanvas();
+            var mainCanvasEx = CanvasEx.GetCanvasExFromScene("MainScene");
+            mainCanvasEx.ShowCanvas();
+        }
 
 	    // クリックされたroom情報を取り出す。主にMainSceneから呼ばれる
 	    public Tuple<string, string> getClickedRoom()
