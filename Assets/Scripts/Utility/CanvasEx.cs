@@ -107,7 +107,7 @@ namespace Utility
     }
     
     /// <summary>
-    /// SpoutSceneとUnazukiSceneのCanvasExを取得
+    /// 複数のscene直下にあるCanvasExを返します
     /// </summary>
     /// <returns></returns>
     public List<CanvasEx> GetCanvasExsFromScene(params string[] sceneNames)
