@@ -7,9 +7,12 @@ namespace Utility
 {
   public class CanvasEx : MonoBehaviour
   {
+    protected virtual void Awake()
+    {
+    }
+    
     protected virtual void Start()
     {
-      InitAtStart();
     }
     
     public void ShowCanvas()
@@ -30,11 +33,6 @@ namespace Utility
     }
 
     protected virtual void Init()
-    {
-      /* do nothing */
-    }
-    
-    protected virtual void InitAtStart()
     {
       /* do nothing */
     }
