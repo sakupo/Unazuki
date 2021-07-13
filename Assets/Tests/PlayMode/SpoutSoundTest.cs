@@ -23,7 +23,10 @@ namespace Tests
         {
             // 初期シーンのロード
             SceneManager.LoadScene("RootScene");
-            SceneManager.LoadSceneAsync("SpoutScene").completed += _ => {
+            SceneManager.LoadScene("SettingsScene", LoadSceneMode.Additive);
+            SceneManager.LoadScene("UnazukiScene", LoadSceneMode.Additive);
+            SceneManager.LoadScene("MainScene", LoadSceneMode.Additive);
+            SceneManager.LoadSceneAsync("SpoutScene", LoadSceneMode.Additive).completed += _ => {
                 soundvolume = GameObject.Find("AudioSource")?.GetComponent<SoundVolume>();
             };
 

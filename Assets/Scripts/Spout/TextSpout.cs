@@ -6,18 +6,24 @@ using Utility;
 
 namespace Spout
 {
-    public class TextSpout : MonoBehaviour, IObserver<string>
+    public class TextSpout : MonoBehaviour, IObserver<string>, IObserver<bool>
     {
         [SerializeField]
         private TextMeshPro cardNameText;
 
         private MessageField messageField;
+        private bool textDisplay;
+        private string text;
         // Start is called before the first frame update
         void Start()
         {
             cardNameText.text = "表示させたい文字列";
+            text = "表示させたい文字列";
             messageField = CanvasEx.GetComponentInCanvasChildrenFromScene<MessageField>("MainScene");
             messageField.Subscribe(this);
+            var textDisplayButton = CanvasEx.GetComponentInCanvasChildrenFromScene<TextDisplayButton>("MainScene");
+            textDisplayButton.Subscribe(this);
+            textDisplay = true;
         }
 
         public void OnCompleted()
@@ -32,7 +38,26 @@ namespace Spout
 
         public void OnNext(string text)
         {
-            cardNameText.text = text;
+            if (textDisplay)
+            {
+                cardNameText.text = text;
+                this.text = text;
+            }
+            
+        }
+
+        public void OnNext(bool value)
+        {
+            textDisplay = value;
+            if (value)
+            {
+                cardNameText.text = text; 
+            }
+            else
+            {
+                cardNameText.text = "";
+            }
+            
         }
     }
 }
