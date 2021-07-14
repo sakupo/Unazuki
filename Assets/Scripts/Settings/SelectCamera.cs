@@ -47,7 +47,6 @@ namespace Settings
         // 値変更時
         public void onValueChanged()
         {
-            Debug.Log(selectCamera.value + " selected");
             string camera = WebCamTexture.devices[selectCamera.value].name;
             PlayerPrefs.SetString(WebCamera.PlayerPrefsKeyCamera, camera);
 			PlayerPrefs.Save();

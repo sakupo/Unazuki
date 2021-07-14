@@ -17,8 +17,6 @@ namespace Settings
         void Start()
         {
             parent.SetActive(show);
-            // オーディオ、カメラのデフォルト値の設定
-            
         }
 
         // ボタンクリック時の処理

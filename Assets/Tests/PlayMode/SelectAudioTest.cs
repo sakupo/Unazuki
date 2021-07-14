@@ -45,9 +45,10 @@ namespace Tests
             // テストごとの初期化
             SetUp();
 
-            // キー"audio"に0が保存されている
-            int preserved = PlayerPrefs.GetInt("audio");
-            Assert.AreEqual(0, preserved);
+            // キー"audio"になんらかの値が保存されている
+            Assert.IsTrue(PlayerPrefs.HasKey(SelectAudio.PlayerPrefsKeyAudio));
+            int preserved = PlayerPrefs.GetInt(SelectAudio.PlayerPrefsKeyAudio);
+            Assert.IsTrue(0 <= preserved && preserved < Microphone.devices.Length);
             yield return null;
         }
     }
