@@ -31,6 +31,13 @@ namespace InputZoomUrl
             data.Add(newData);
         }
 
+        // n番目のデータを変更
+        public void Edit(int n, Tuple<string, string> newData)
+        {
+            data.RemoveAt(n);
+            data.Insert(n, newData);
+        }
+
         // データサイズを取得
         public int Count()
         {

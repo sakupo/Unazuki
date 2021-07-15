@@ -110,6 +110,30 @@ namespace InputZoomUrl {
 		    // 今追加したデータを描画
 		    DisplayRoomButton(zoomUrlsData.Count() - 1);
 	    }
+	    
+	    // n番目のデータを取得
+	    public Tuple<string, string> GetData(int n)
+	    {
+		    return zoomUrlsData.Get(n);
+	    }
+	    
+	    // n番目のデータを変更
+	    public void EditData(int n, Tuple<string, string> data)
+	    {
+		    zoomUrlsData.Edit(n, data);
+		    
+		    // 今変更したデータを描画
+		    foreach (TextMeshProUGUI text in RoomButtons.GetComponentsInChildren<Button>()[0].GetComponentsInChildren<TextMeshProUGUI>())
+		    {
+			    if (text.name == "RoomName")
+			    {
+				    text.text = data.Item1;
+			    } else if (text.name == "ZoomUrl")
+			    {
+				    text.text = data.Item2;
+			    }
+		    }
+	    }
 
 		void OnApplicationQuit(){
 			// アプリ終了時にデータを保存する
