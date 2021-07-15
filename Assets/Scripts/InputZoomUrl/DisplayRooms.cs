@@ -13,6 +13,7 @@ namespace InputZoomUrl {
     	public GameObject canvas;
 	    private Vector3 centerToLeftTop; // canvasの中心から左上の座標までのベクトル
     	public Button baseRoomButton; // clone元となるButtonオブジェクト
+        public GameObject RoomButtons; // cloneされたButton達の親オブジェクト
 	    private float buttonWidth;
     	private float buttonHeight;
 	    private ZoomUrlsData zoomUrlsData;  // room名とurlのペアを全て保存するデータ構造
@@ -21,13 +22,13 @@ namespace InputZoomUrl {
     
 	    void Start()
     	{
+	        buttonWidth = baseRoomButton.GetComponent<RectTransform>().sizeDelta.x;
+	        buttonHeight = baseRoomButton.GetComponent<RectTransform>().sizeDelta.y;
+	        
         	// 座標変換用に、canvasの中心から左上の座標までのベクトルを計算
-	        centerToLeftTop = new Vector3((-1) * canvas.GetComponent<RectTransform>().sizeDelta.x / 2,
+	        centerToLeftTop = new Vector3((-1) * buttonWidth / 2,
     	        canvas.GetComponent<RectTransform>().sizeDelta.y / 2, 0);
         
-        	buttonWidth = baseRoomButton.GetComponent<RectTransform>().sizeDelta.x;
- 	        buttonHeight = baseRoomButton.GetComponent<RectTransform>().sizeDelta.y;
-
 			// データを読み込み
 			string savedData =PlayerPrefs.GetString("ZoomUrlsData");
 			if (savedData == "")
@@ -57,7 +58,7 @@ namespace InputZoomUrl {
 			string roomName = zoomUrlData.Item1;
 			string zoomUrl = zoomUrlData.Item2;
 
-    	    Button clonedButton = Instantiate(baseRoomButton, canvas.transform);
+    	    Button clonedButton = Instantiate(baseRoomButton, RoomButtons.transform);
         	clonedButton.gameObject.SetActive(true);  // 表示させる
             Vector3 position = ConvertPosition(n);
 	        clonedButton.transform.localPosition = position;
@@ -82,8 +83,7 @@ namespace InputZoomUrl {
     	// canvasの中心基準で、buttonを配置すべき座標を計算し、Vector3オブジェクトとして返す
 	    private Vector3 ConvertPosition(int n)
     	{
-        	return new Vector3(centerToLeftTop.x + buttonWidth/2,
-            	centerToLeftTop.y - n * buttonHeight - buttonHeight/2, 0);
+            return new Vector3(centerToLeftTop.x, centerToLeftTop.y + (-1) * n * buttonHeight, 0);
 	    }
 
     	// roomのボタンが押されたときに呼ばれる関数
