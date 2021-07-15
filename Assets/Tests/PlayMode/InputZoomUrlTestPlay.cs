@@ -22,7 +22,10 @@ namespace Tests
         {
             // 初期シーンのロード
             SceneManager.LoadScene("RootScene");
-            SceneManager.LoadScene("HomeScene", LoadSceneMode.Additive);
+            SceneManager.LoadSceneAsync("HomeScene", LoadSceneMode.Additive);
+            SceneManager.LoadSceneAsync("MainScene", LoadSceneMode.Additive);
+            SceneManager.LoadSceneAsync("SpoutScene", LoadSceneMode.Additive);
+            SceneManager.LoadSceneAsync("UnazukiScene", LoadSceneMode.Additive);
         }
     
         // canvasの初期化
