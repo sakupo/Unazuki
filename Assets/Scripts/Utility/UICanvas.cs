@@ -8,10 +8,26 @@ namespace Utility
 {
   public class UICanvas : CanvasEx
   {
+    protected sealed override void Awake()
+    {
+      // 次シーンのカメラを非表示
+      GetCanvas().worldCamera.gameObject.SetActive(false);
+      InitAtAwake();
+    }
     protected sealed override void Start()
     {
       ChangeCamera("RootScene");
       InitAtStart();
+    }
+    
+    protected virtual void InitAtAwake()
+    {
+      /* do nothing */
+    }
+    
+    protected virtual void InitAtStart()
+    {
+      /* do nothing */
     }
 
     protected void ChangeCamera(String toSceneName)
