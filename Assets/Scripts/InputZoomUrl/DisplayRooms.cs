@@ -134,6 +134,12 @@ namespace InputZoomUrl {
 			    }
 		    }
 	    }
+	    
+	    // n番目のデータを削除
+	    public void DeleteData(int n)
+	    {
+		    zoomUrlsData.Delete(n);
+	    }
 
 		void OnApplicationQuit(){
 			// アプリ終了時にデータを保存する

@@ -38,6 +38,12 @@ namespace InputZoomUrl
             data.Insert(n, newData);
         }
 
+        // n番目のデータを削除
+        public void Delete(int n)
+        {
+            data.RemoveAt(n);
+        }
+
         // データサイズを取得
         public int Count()
         {
