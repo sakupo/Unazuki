@@ -34,7 +34,7 @@ namespace Tests
                     .GetComponent<Canvas>();
             }
         }
-
+#if !UNITY_CLOUD_BUILD
         // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
         // `yield return null;` to skip a frame.
         [UnityTest]
@@ -51,5 +51,6 @@ namespace Tests
             Assert.IsTrue(0 <= preserved && preserved < Microphone.devices.Length);
             yield return null;
         }
+#endif
     }
 }

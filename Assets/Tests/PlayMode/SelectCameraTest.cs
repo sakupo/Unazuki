@@ -37,6 +37,7 @@ namespace Tests
             }
         }
 
+#if !UNITY_CLOUD_BUILD
         // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
         // `yield return null;` to skip a frame.
         [UnityTest]
@@ -60,5 +61,6 @@ namespace Tests
             Assert.IsTrue(i < WebCamTexture.devices.Length);
             yield return null;
         }
+#endif
     }
 }
