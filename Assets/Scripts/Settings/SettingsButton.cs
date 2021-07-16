@@ -8,9 +8,6 @@ namespace Settings
     public class SettingsButton : MonoBehaviour
     {
         public Button settingsButton;
-        public GameObject inputAPI;
-        public GameObject applyAPI;
-        public GameObject selectDevice;
         private bool show = false;
 
         public GameObject parent;
