@@ -8,6 +8,8 @@ namespace Settings {
 	public class SelectAudio : MonoBehaviour
 	{
 		public TMP_Dropdown selectAudio;
+		public static readonly string PlayerPrefsKeyAudio = "audio";
+		
     	// Start is called before the first frame update
     	void Start()
     	{
@@ -19,16 +21,25 @@ namespace Settings {
 				}
 				selectAudio.AddOptions(list);
 				// デフォルト値の設定
-				selectAudio.value = 0;
-				PlayerPrefs.SetInt("audio", 0);
-			}
+				if (PlayerPrefs.HasKey(PlayerPrefsKeyAudio))
+	            {
+				 	selectAudio.value = PlayerPrefs.GetInt(PlayerPrefsKeyAudio);
+				}
+				else
+				{
+					selectAudio.value = 0;
+					PlayerPrefs.SetInt(PlayerPrefsKeyAudio, 0);
+					PlayerPrefs.Save();
+				}
+            }
     	}
 
 		// 値変更時
     	public void OnValueChanged() 
 		{
 			// キー"audio"で保存
-			PlayerPrefs.SetInt("audio", selectAudio.value);
+			PlayerPrefs.SetInt(PlayerPrefsKeyAudio, selectAudio.value);
+			PlayerPrefs.Save();
 			Debug.Log(selectAudio.value + " selected");
 		}
 	}
