@@ -124,6 +124,15 @@ namespace InputZoomUrl
                 clonedButton.gameObject.SetActive(true);
                 clonedButton.interactable = true;
             }
+            
+		    // 描画されているroomボタンを全て削除
+		    foreach (Button roomButton in roomButtons.GetComponentsInChildren<Button>())
+		    {
+			    Destroy(roomButton.gameObject);
+		    }
+		    
+		    // 再描画
+		    gameObject.GetComponentInChildren<DisplayRooms>().DisplayAllRoomButtons();
         }
     }
 }

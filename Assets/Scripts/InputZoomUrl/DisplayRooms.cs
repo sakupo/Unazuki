@@ -118,22 +118,10 @@ namespace InputZoomUrl {
 		    return zoomUrlsData.Get(n);
 	    }
 	    
-	    // n番目のデータを変更
+	    // n番目のデータを変更(この関数単体では描画は変更されない)
 	    public void EditData(int n, Tuple<string, string> data)
 	    {
 		    zoomUrlsData.Edit(n, data);
-		    
-		    // 今変更したデータを描画
-		    foreach (TextMeshProUGUI text in RoomButtons.GetComponentsInChildren<Button>()[0].GetComponentsInChildren<TextMeshProUGUI>())
-		    {
-			    if (text.name == "RoomName")
-			    {
-				    text.text = data.Item1;
-			    } else if (text.name == "ZoomUrl")
-			    {
-				    text.text = data.Item2;
-			    }
-		    }
 	    }
 	    
 	    // n番目のデータを削除
