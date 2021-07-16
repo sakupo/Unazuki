@@ -8,6 +8,7 @@ namespace Utility
 {
   public class UICanvas : CanvasEx
   {
+    protected string cameraScene = "RootScene";
     protected sealed override void Awake()
     {
       // 次シーンのカメラを非表示
@@ -16,7 +17,7 @@ namespace Utility
     }
     protected sealed override void Start()
     {
-      ChangeCamera("RootScene");
+      ChangeCamera(cameraScene);
       InitAtStart();
     }
     
