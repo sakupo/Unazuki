@@ -59,6 +59,7 @@ namespace Tests
             
             // 追加したデータのボタンを取得
             Button targetButton = editZoomUrl.roomButtons.GetComponentsInChildren<Button>().Last();
+            int index = editZoomUrl.roomButtons.GetComponentsInChildren<Button>().Length;
             CheckRoomData(targetButton, oldRoomName, oldZoomUrl);
 
             // Edit Buttonを押す
@@ -77,10 +78,10 @@ namespace Tests
             editZoomUrl.editSaveButton.onClick.Invoke();
             
             // 変更されているか確認
-            CheckRoomData(targetButton, newRoomName, newZoomUrl);
+            CheckRoomData(editZoomUrl.roomButtons.GetComponentsInChildren<Button>().Last(), newRoomName, newZoomUrl);
             
             // テストデータを削除
-            displayRooms.DeleteData(editZoomUrl.roomButtons.GetComponentsInChildren<Button>().Length - 1);
+            displayRooms.DeleteData(index - 1);
 
             yield return null;
         }
