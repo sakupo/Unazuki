@@ -11,7 +11,7 @@ namespace InputZoomUrl {
 	public class DisplayRooms : MonoBehaviour
 	{
     	public GameObject canvas;
-	    private Vector3 centerToLeftTop; // canvasの中心から左上の座標までのベクトル
+	    private Vector3 halfOfReferenceResolution; // canvasの中心から左上の座標までのベクトル
     	public Button baseRoomButton; // clone元となるButtonオブジェクト
         public GameObject RoomButtons; // cloneされたButton達の親オブジェクト
 	    private float buttonWidth;
@@ -26,8 +26,7 @@ namespace InputZoomUrl {
 	        buttonHeight = baseRoomButton.GetComponent<RectTransform>().sizeDelta.y;
 	        
         	// 座標変換用に、canvasの中心から左上の座標までのベクトルを計算
-	        centerToLeftTop = new Vector3((-1) * buttonWidth / 2,
-    	        canvas.GetComponent<RectTransform>().sizeDelta.y / 2, 0);
+	        halfOfReferenceResolution = canvas.GetComponent<CanvasScaler>().referenceResolution/2;
         
 			// データを読み込み
 			string savedData =PlayerPrefs.GetString("ZoomUrlsData");
@@ -84,7 +83,7 @@ namespace InputZoomUrl {
     	// canvasの中心基準で、buttonを配置すべき座標を計算し、Vector3オブジェクトとして返す
 	    private Vector3 ConvertPosition(int n)
     	{
-            return new Vector3(centerToLeftTop.x, centerToLeftTop.y + (-1) * n * buttonHeight, 0);
+            return new Vector3(0, halfOfReferenceResolution.y - (n+0.5f) * buttonHeight, 0);
 	    }
 
     	// roomのボタンが押されたときに呼ばれる関数
