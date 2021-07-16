@@ -76,6 +76,7 @@ namespace InputZoomUrl {
 	        }
 
 	        // click時のcall back関数を登録
+	        clonedButton.GetComponent<Button>().onClick.RemoveAllListeners();
     	    clonedButton.GetComponent<Button>().onClick.AddListener(() => ClickRoomButton(n));
 	    }
 
@@ -87,7 +88,7 @@ namespace InputZoomUrl {
 	    }
 
     	// roomのボタンが押されたときに呼ばれる関数
-	    void ClickRoomButton(int n)
+	    public void ClickRoomButton(int n)
     	{
 	        clickedRoom = zoomUrlsData.Get(n);
             
@@ -126,7 +127,17 @@ namespace InputZoomUrl {
 	    // n番目のデータを削除
 	    public void DeleteData(int n)
 	    {
+		    // 描画されているroomボタンを全て削除
+		    foreach (Button roomButton in RoomButtons.GetComponentsInChildren<Button>())
+		    {
+			    Destroy(roomButton.gameObject);
+		    }
+
+		    // データも削除
 		    zoomUrlsData.Delete(n);
+		    
+		    // 再描画
+		    DisplayAllRoomButtons();
 	    }
 
 		void OnApplicationQuit(){
