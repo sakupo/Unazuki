@@ -11,12 +11,14 @@ namespace InputZoomUrl
   {
     protected override void InitAtStart()
     {
+#if DEBUG
       // 以下のCanvasを隠す
-      List<CanvasEx> canvasExs = GetCanvasExsFromScene("MainScene");
+      List<CanvasEx> canvasExs = GetCanvasExsFromScene("MainScene", "SpoutScene", "UnazukiScene");
       foreach (var canvasEx in canvasExs)
       {
         canvasEx.HideCanvas();
       }
+#endif
     }
   }
 }
