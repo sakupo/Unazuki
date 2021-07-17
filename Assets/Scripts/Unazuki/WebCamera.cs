@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -112,7 +113,8 @@ namespace Unazuki
 		/// </summary>
 		protected virtual void Awake()
 		{
-			SetDevice();
+			// 初期化時にはデバイスをセットしない(Update内のみでセットする)
+			//SetDevice();
 		}
 
 		/// <summary>
@@ -138,7 +140,13 @@ namespace Unazuki
 				PlayerPrefs.Save();
 				return true;
 			}
+			
 			// cameraが設定されているとき
+			if (DeviceName == PlayerPrefs.GetString(PlayerPrefsKeyCamera))
+			{
+				// カメラに変更がないとき
+				return true;
+			}
 			try
 			{
 				DeviceName = PlayerPrefs.GetString(PlayerPrefsKeyCamera);
@@ -172,18 +180,15 @@ namespace Unazuki
 		/// </summary>
 		private void Update ()
 		{
-			if (!PlayerPrefs.HasKey(PlayerPrefsKeyCamera))
+			// cameraが未設定のとき
+			bool isSetDevice = SetDevice();
+			if (!isSetDevice)
 			{
-				// cameraが未設定のとき
-				bool isSetDevice = SetDevice();
-				if (!isSetDevice)
-				{
-					// cameraがないとき
-					return;
-				}
-			}	
+				// cameraがないとき
+				return;
+			}
 
-			if (webCamTexture != null && webCamTexture.didUpdateThisFrame)
+				if (webCamTexture != null && webCamTexture.didUpdateThisFrame)
 			{
 				// this must be called continuously
 				ReadTextureConversionParameters();

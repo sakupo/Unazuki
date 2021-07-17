@@ -4,6 +4,12 @@ namespace Spout
 {
   public class SpoutCanvas : CanvasEx
   {
+    protected override void Awake()
+    {
+#if !DEBUG
+      HideCanvas();
+#endif
+    }
     protected override void Init()
     {
       GetCanvas().worldCamera.gameObject.SetActive(true);

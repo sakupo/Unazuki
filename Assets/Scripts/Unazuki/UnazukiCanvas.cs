@@ -4,6 +4,12 @@ namespace Unazuki
 {
   public class UnazukiCanvas: UICanvas
   {
+    protected override void InitAtAwake()
+    {
+#if !DEBUG
+      HideCanvas();
+#endif
+    }
     protected override void Init()
     {
       var unazukiScene = GetComponentFromScene<UnazukiScene>("UnazukiScene");

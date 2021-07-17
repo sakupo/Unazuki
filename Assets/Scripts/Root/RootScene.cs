@@ -25,7 +25,7 @@ namespace Root
         if (! scene.isLoaded)
         {
           // シーンがヒエラルキー上に存在しないとき
-          SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+          SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
         }
       }
     }
