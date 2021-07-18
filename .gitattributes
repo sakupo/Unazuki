@@ -1,1 +1,2 @@
 Assets/TextMesh[[:space:]]Pro/Fonts/SourceHanSansHWJ/OTF/JapaneseHW/SourceHanSansHW-Regular[[:space:]]SDF.asset filter=lfs diff=lfs merge=lfs -text
+Assets/TextMesh[[:space:]]Pro/Resources/Sprite[[:space:]]Assets/emoji.asset filter=lfs diff=lfs merge=lfs -text
