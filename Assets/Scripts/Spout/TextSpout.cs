@@ -9,7 +9,7 @@ namespace Spout
     public class TextSpout : MonoBehaviour, IObserver<string>, IObserver<bool>
     {
         [SerializeField]
-        private TextMeshPro cardNameText;
+        private TextMeshProUGUI cardNameText;
 
         private MessageField messageField;
         private bool textDisplay;
