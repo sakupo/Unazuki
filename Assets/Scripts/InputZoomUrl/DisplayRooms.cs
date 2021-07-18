@@ -57,6 +57,16 @@ namespace InputZoomUrl {
 			string roomName = zoomUrlData.Item1;
 			string zoomUrl = zoomUrlData.Item2;
 
+			// 文字列が長すぎたら、末尾をカット
+			if (roomName.Length > 20)
+			{
+				roomName = roomName.Substring(0, 17) + "...";
+			}
+			if (zoomUrl.Length > 20)
+			{
+				zoomUrl = zoomUrl.Substring(0, 17) + "...";
+			}
+
     	    Button clonedButton = Instantiate(baseRoomButton, RoomButtons.transform);
         	clonedButton.gameObject.SetActive(true);  // 表示させる
             Vector3 position = ConvertPosition(n);
