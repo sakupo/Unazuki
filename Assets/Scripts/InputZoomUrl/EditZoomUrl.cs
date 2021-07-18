@@ -43,6 +43,10 @@ namespace InputZoomUrl
             {
                 SetNewListner(clonedButtons[index], index);
             }
+            
+            // BackButtonの挙動を変更
+            backButton.onClick.RemoveAllListeners();
+            backButton.onClick.AddListener(() => Back());
         }
 
         // 引数で受け取ったUIオブジェクトを全てactiveの値にする
@@ -86,6 +90,7 @@ namespace InputZoomUrl
             inputZoomUrlField.text = data.Item2;
             
             // Edit Saveボタンにリスナーを登録
+            editSaveButton.onClick.RemoveAllListeners();
             editSaveButton.onClick.AddListener(() => EditSaveOnClick(n));
         }
 

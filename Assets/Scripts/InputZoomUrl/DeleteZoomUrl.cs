@@ -42,6 +42,10 @@ namespace InputZoomUrl
             {
                 SetNewListner(clonedButtons[index], index);
             }
+
+            // BackButtonの挙動を変更
+            backButton.onClick.RemoveAllListeners();
+            backButton.onClick.AddListener(() => Back());
         }
         
         // 引数で受け取ったUIオブジェクトを全てactiveの値にする
