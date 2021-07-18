@@ -89,6 +89,16 @@ namespace Tests
         // 引数のbuttonに格納されているデータのroomNameとzoomUrlが一致するか確認する
         private void CheckRoomData(Button button, string roomName, string zoomUrl)
         {
+            // 文字列が長すぎたら、末尾をカット(されている)
+            if (roomName.Length > 20)
+            {
+                roomName = roomName.Substring(0, 17) + "...";
+            }
+            if (zoomUrl.Length > 20)
+            {
+                zoomUrl = zoomUrl.Substring(0, 17) + "...";
+            }
+            
             foreach (TextMeshProUGUI text in button.GetComponentsInChildren<TextMeshProUGUI>())
             {
                 if (text.name == "RoomName")
