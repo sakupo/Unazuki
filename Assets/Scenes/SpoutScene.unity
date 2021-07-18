@@ -868,6 +868,7 @@ GameObject:
   - component: {fileID: 1939580369}
   - component: {fileID: 1939580368}
   - component: {fileID: 1939580371}
+  - component: {fileID: 1939580373}
   - component: {fileID: 1939580372}
   m_Layer: 0
   m_Name: SpoutCamera
@@ -967,3 +968,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71e20a6ef7914913878421ed52e459e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1939580373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939580367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59ae4f317f9b4f8b8d64f71768aaea6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sourceTexture: {fileID: 0}
+  _alphaSupport: 0
