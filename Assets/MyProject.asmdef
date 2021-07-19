@@ -1,0 +1,5 @@
+﻿{
+	"name": "MyProject",
+	"allowUnsafeCode": true,
+	"references": ["Unity.TextMeshPro", "Klak.Spout"]
+}
