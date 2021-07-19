@@ -7,7 +7,7 @@
 ## Zoom での使用方法
 
 1. 当リポジトリのリリース欄から『Unazuki』アプリをダウンロード
-2. - Windows の場合，[Spout のページ](https://leadedge.github.io/)から Spout と SpouyCam をダウンロードしてインストール
+2. - Windows の場合，[Spout のページ](https://leadedge.github.io/)から Spout と SpoutCam をダウンロードしてインストール
    - MacOS の場合，[OBS](https://obsproject.com/ja/download)をダウンロードしてインストール
      - OBS を起動し，左下のソースボタンの+から「サイフォンクライアント」の選択・新規作成
      - 「ソース」をクリックして映像ソース選択(Unazukiを含む名前)・OK をクリック
