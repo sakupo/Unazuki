@@ -80,6 +80,8 @@ namespace Unazuki
 			}
 		}
 
+		private bool isPaused = false;
+
 		/// <summary>
 		/// This method scans source device params (flip, rotation, front-camera status etc.) and
 		/// prepares TextureConversionParameters that will compensate all that stuff for OpenCV
@@ -175,11 +177,28 @@ namespace Unazuki
 			}
 		}
 
+		public void PauseCamera(bool isPause)
+		{
+			isPaused = isPause;
+			if (isPause)
+			{
+				OnDestroy();
+			}
+			else
+			{
+				SetDevice();
+			}
+		}
+
 		/// <summary>
 		/// Updates web camera texture
 		/// </summary>
 		private void Update ()
 		{
+			if (isPaused)
+			{
+				return;
+			}
 			// cameraが未設定のとき
 			bool isSetDevice = SetDevice();
 			if (!isSetDevice)
