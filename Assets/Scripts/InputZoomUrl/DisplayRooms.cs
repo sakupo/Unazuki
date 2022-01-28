@@ -45,9 +45,13 @@ namespace InputZoomUrl {
 		// zoomUrlsDataに保存されている全てのデータを描画する
 	    public void DisplayAllRoomButtons()
     	{
-			for(int index = 0; index < zoomUrlsData.Count(); index++){
-				DisplayRoomButton(index);
-			}
+	      for(int index = 0; index < zoomUrlsData.Count(); index++){
+					DisplayRoomButton(index);
+				}
+	      if (zoomUrlsData.Count() < 1)
+	      {
+		      AddData(new Tuple<string, string>("default", "")); 
+	      }
     	}
 
 		// ZoomUrlsDataのn番目のデータを、ボタンとしてcanvasに描画する
