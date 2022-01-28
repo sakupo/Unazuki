@@ -63,7 +63,10 @@ namespace Tests
             {
                 if (button.name == "BaseRoomButton(Clone)") buttonNum++;
             };
-
+            if (buttonNum == 0)
+            {
+                buttonNum++;
+            }
             // 数が一致しているか確認
             Assert.AreEqual(dataNum, buttonNum);
             
