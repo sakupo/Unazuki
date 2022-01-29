@@ -1,14 +1,16 @@
 using System;
+using Main;
 using OpenCvSharp;
 using UnityEngine;
 using OpenCvSharp.Demo;
+using Utility;
 using Rect = OpenCvSharp.Rect;
 
 namespace Unazuki
 {
   using Unity = OpenCvSharp.Unity;
 
-  public class UnazukiProcessor : WebCamera, IUnazukiProcessor
+  public class UnazukiProcessor : WebCamera, IUnazukiProcessor, IObserver<bool>
   {
     public TextAsset faces;
     public TextAsset eyes;
@@ -16,6 +18,8 @@ namespace Unazuki
 
     private FaceProcessorLive<WebCamTexture> processor;
     private Rect CurrentDetectedFace { get; set; }
+    
+    private SpoutCamStateButton spoutCamStateButton;
 
     /// <summary>
     /// Default initializer for MonoBehavior sub-classes
@@ -56,6 +60,28 @@ namespace Unazuki
       // performance data - some tricks to make it work faster
       processor.Performance.Downscale = 256; // processed image is pre-scaled down to N px by long side
       processor.Performance.SkipRate = 0; // we actually process only each Nth frame (and every frame for skipRate = 0)
+    }
+
+    
+    void Start()
+    {
+      spoutCamStateButton = CanvasEx.GetComponentInCanvasChildrenFromScene<SpoutCamStateButton>("MainScene");
+      spoutCamStateButton.Subscribe(this);
+    }
+
+    public void OnCompleted()
+    {
+      // do nothing
+    }
+
+    public void OnError(Exception error)
+    {
+      // do nothing
+    }
+
+    public void OnNext(bool value)
+    {
+      PauseCamera(!value);
     }
 
     /// <summary>

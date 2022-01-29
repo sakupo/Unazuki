@@ -18,6 +18,8 @@ namespace Tests
     {
       // 初期シーンのロード
       SceneManager.LoadScene("RootScene");
+      SceneManager.LoadScene("MainScene", LoadSceneMode.Additive);
+      SceneManager.LoadScene("SpoutScene", LoadSceneMode.Additive);
       SceneManager.LoadScene("UnazukiScene", LoadSceneMode.Additive);
     }
     

@@ -10,7 +10,7 @@
       "hash": "dfb5a4c970a94b646b54e36d0d1acddd692ccf0b"
     },
     "com.unity.collab-proxy": {
-      "version": "1.2.16",
+      "version": "1.14.4",
       "depth": 0,
       "source": "registry",
       "dependencies": {},
@@ -33,14 +33,14 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ide.vscode": {
-      "version": "1.2.3",
+      "version": "1.2.4",
       "depth": 0,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
     "com.unity.test-framework": {
-      "version": "1.1.24",
+      "version": "1.1.29",
       "depth": 0,
       "source": "registry",
       "dependencies": {
